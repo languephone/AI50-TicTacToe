@@ -3,6 +3,7 @@ Tic Tac Toe Player
 """
 
 import math
+import copy
 
 X = "X"
 O = "O"
@@ -64,7 +65,7 @@ def result(board, action):
         raise IndexError
     
     # Create deep copy of board
-    new_board = board.deepcopy()
+    new_board = copy.deepcopy(board)
 
     # Place player marker at action location
     new_board[action[0]][action[1]] = player(board)
@@ -77,6 +78,7 @@ def winner(board):
     Returns the winner of the game, if there is one.
     """
     # 8 ways to win: all in a row, all in a column or 2 diagonals
+    return False
 
 
 
@@ -86,9 +88,9 @@ def terminal(board):
     """
     if not winner(board):
         # If any cells in board are EMPTY, game is still in progress
-        For row in board:
+        for row in board:
             for column in row:
-                if not column:
+                if column is None:
                     return False
 
     # If there's no winner and no spaces are empty, the game must be over
@@ -105,7 +107,7 @@ def utility(board):
         return -1
     else:
         return 0
-        
+
 
 def minimax(board):
     """
