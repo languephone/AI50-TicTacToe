@@ -84,16 +84,32 @@ def winner(board):
     for player in players:
         # Check for completed row
         for i in range(len(board)):
-            if board[i][0] == player and board[i][1] == player and board[i][2] == player:
+            if (
+                board[i][0] == player and
+                board[i][1] == player and
+                board[i][2] == player
+                ):
                 return player
         # Check for completed column
         for j in range(len(board[0])):
-            if board[0][j] == player and board[1][j] == player and board[2][j] == player:
+            if (
+                board[0][j] == player and
+                board[1][j] == player and
+                board[2][j] == player
+                ):
                 return player
         # Check diagonals
-        if board[0][0] == player and board[1][1] == player and board[2][2] == player:
+        if (
+            board[0][0] == player and
+            board[1][1] == player and
+            board[2][2] == player
+            ):
             return player
-        if board[0][2] == player and board[1][1] == player and board[2][0] == player:
+        if (
+            board[0][2] == player and
+            board[1][1] == player and
+            board[2][0] == player
+            ):
             return player 
 
     return None
