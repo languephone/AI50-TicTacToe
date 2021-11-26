@@ -1,0 +1,4 @@
+__pycache__/
+*.ttf
+requirements.txt
+runner.py
