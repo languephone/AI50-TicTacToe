@@ -154,7 +154,7 @@ def minimax(board):
 
     if player(board) == X:
         for action in actions(board):
-            action_result_value = maxvalue(result(board, action))
+            action_result_value = minvalue(result(board, action))
             if action_result_value > highest_value:
                 highest_value = action_result_value
                 best_action = action
@@ -162,7 +162,7 @@ def minimax(board):
     
     if player(board) == O:
         for action in actions(board):
-            action_result_value = minvalue(result(board, action))
+            action_result_value = maxvalue(result(board, action))
             if action_result_value < lowest_value:
                 lowest_value = action_result_value
                 best_action = action
@@ -178,7 +178,6 @@ def minvalue(board):
         return utility(board)
 
     min_utility = 2
-
     for action in actions(board):
         min_utility = min(min_utility, maxvalue(result(board, action)))
     return min_utility
@@ -193,7 +192,6 @@ def maxvalue(board):
         return utility(board)
 
     max_utility = -2
-
     for action in actions(board):
         max_utility = max(max_utility, minvalue(result(board, action)))
     return max_utility
