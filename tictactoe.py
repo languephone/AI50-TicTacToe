@@ -61,7 +61,7 @@ def result(board, action):
     Returns the board that results from making move (i, j) on the board.
     """
     # Raise error if action violates rules
-    if board[action[0]][action[1]] is not None:
+    if board[action[0]][action[1]] != EMPTY:
         raise IndexError
     
     # Create deep copy of board
@@ -146,4 +146,40 @@ def minimax(board):
     """
     Returns the optimal action for the current player on the board.
     """
-    raise NotImplementedError
+
+    if player(board) == X:
+        return maxvalue(board):
+    if player(board) == O:
+        return minvalue(board):
+
+
+def minvalue(board):
+    """
+    Returns the minimum utility from the available options.
+    """
+
+    if terminal(board):
+        return utility(board)
+
+    min_utility = 2
+
+    for action in actions(board):
+        min_utility = min(min_utility, maxvalue(result(board, action)))
+    return min_utility
+
+
+def maxvalue(board):
+    """
+    Returns the maximum utility from the available options.
+    """
+
+    if terminal(board):
+        return utility(board)
+
+    max_utility = -2
+
+    for action in actions(board):
+        max_utility = max(max_utility, minvalue(result(board, action)))
+    return max_utility
+
+
