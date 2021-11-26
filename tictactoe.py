@@ -147,10 +147,26 @@ def minimax(board):
     Returns the optimal action for the current player on the board.
     """
 
+    highest_value = -2
+    lowest_value = 2
+
+    best_action = None
+
     if player(board) == X:
-        return maxvalue(board):
+        for action in actions(board):
+            action_result_value = maxvalue(result(board, action))
+            if action_result_value > highest_value:
+                highest_value = action_result_value
+                best_action = action
+        return best_action
+    
     if player(board) == O:
-        return minvalue(board):
+        for action in actions(board):
+            action_result_value = minvalue(result(board, action))
+            if action_result_value < lowest_value:
+                lowest_value = action_result_value
+                best_action = action
+        return best_action
 
 
 def minvalue(board):
